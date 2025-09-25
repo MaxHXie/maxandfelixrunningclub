@@ -1,95 +1,64 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { runs } from "@/data/runs";
+import type { Run } from "@/data/runs";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main>
+      <header>
+        <h1>Max and Felix running club</h1>
+        <p>
+          Welcome! We run together once per week on Tuesdays at Stockholm
+          Stadion. All paces are welcome.
+        </p>
+        <p>
+          Meeting point: Stockholm Stadion — see on{" "}
+          <a
+            href="https://www.google.com/maps/place/Stockholm+Olympic+Stadium/@59.3453363,18.0741469,16z/data=!3m1!4b1!4m6!3m5!1s0x465f9d46987f203b:0x84fb387fe43d367d!8m2!3d59.3453364!4d18.0790178!16zL20vMDZxcTV5?entry=ttu&g_ep=EgoyMDI1MDkyMi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Google Maps
+          </a>
+          .
+        </p>
+        <p>Time: 17:30 (we warmup for 15 minutes and aim to finish at 18:15)</p>
+        <p>Bring your running shoes and a good mood. See you on Tuesday!</p>
+      </header>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <section>
+        <h2>Past runs</h2>
+        {runs.length === 0 ? (
+          <p>No runs listed yet.</p>
+        ) : (
+          <ul>
+            {runs.map((run: Run, index: number) => (
+              <li key={index}>
+                <article>
+                  <h3>{run.date}</h3>
+                  {run.note ? <p>{run.note}</p> : null}
+                  {run.image ? (
+                    <figure>
+                      <img
+                        src={run.image}
+                        alt={run.alt ?? `Run on ${run.date}`}
+                        style={{
+                          maxWidth: "100%",
+                          height: "auto",
+                          maxHeight: "400px",
+                        }}
+                        loading="lazy"
+                      />
+                      {run.caption ? (
+                        <figcaption>{run.caption}</figcaption>
+                      ) : null}
+                    </figure>
+                  ) : null}
+                </article>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    </main>
   );
 }
