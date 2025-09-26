@@ -16,6 +16,18 @@ export default function Ad() {
   ];
 
   useEffect(() => {
+    // Preload all ad images early to avoid flashes when shown
+    ads.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      if ("decode" in img && typeof img.decode === "function") {
+        // Best-effort decode to get them ready; ignore errors
+        img.decode().catch(() => {});
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     initialTimerRef.current = window.setTimeout(() => setIsOpen(true), 3000);
     return () => {
       if (initialTimerRef.current) window.clearTimeout(initialTimerRef.current);
@@ -56,6 +68,17 @@ export default function Ad() {
             setIsOpen(true);
           }, 3000);
         } else {
+          try {
+            if (
+              typeof navigator !== "undefined" &&
+              "geolocation" in navigator
+            ) {
+              navigator.geolocation.getCurrentPosition(
+                () => {},
+                () => {}
+              );
+            }
+          } catch {}
           setIsDone(true);
         }
       }}

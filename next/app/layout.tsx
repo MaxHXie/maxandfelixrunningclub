@@ -13,6 +13,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="image" href="/runs/ad1.png" />
+        <link rel="preload" as="image" href="/runs/ad2.png" />
+        <link rel="preload" as="image" href="/runs/ad3.png" />
+        <link rel="preload" as="image" href="/runs/ad4.png" />
+      </head>
       <body>
         {children}
         <Ad />
