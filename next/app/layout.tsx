@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Ad from "./Ad";
 
 export const metadata: Metadata = {
   title: "Max and Felix running club",
@@ -12,7 +13,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Ad />
+      </body>
     </html>
   );
 }
