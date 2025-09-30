@@ -17,10 +17,10 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            Google Maps (IMPORTANT! You can normally get into Stadion from the
-            side entrance located on the north east corner)
+            Google Maps
           </a>
-          .
+          . IMPORTANT! You can normally get into Stadion from the side entrance
+          located on the north east corner.
         </p>
         <p>Time: 17:30 (we warmup for 15 minutes and aim to finish at 18:15)</p>
         <p>Bring your running shoes and a good mood. See you on Tuesday!</p>
