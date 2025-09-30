@@ -13,4 +13,10 @@ export const runs = [
     image: "/runs/run1.jpeg",
     caption: "Photo in the sun",
   },
+  {
+    date: "2025-09-30",
+    note: "Good weather with small rain, pushed okay, spooky knees.",
+    image: "/runs/run2.jpeg",
+    caption: "50% growth!",
+  },
 ];
