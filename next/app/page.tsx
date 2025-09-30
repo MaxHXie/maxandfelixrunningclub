@@ -17,7 +17,8 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            Google Maps
+            Google Maps (IMPORTANT! You can normally get into Stadion from the
+            side entrance located on the north east corner)
           </a>
           .
         </p>
