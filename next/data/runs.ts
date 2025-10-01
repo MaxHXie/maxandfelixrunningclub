@@ -19,4 +19,4 @@ export const runs = [
     image: "/runs/run2.jpeg",
     caption: "50% growth!",
   },
-];
+].reverse();
